@@ -1,0 +1,56 @@
+{
+  "cli": {
+    "version": ">= 14.2.0",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "base": {
+      "distribution": "internal",
+      "ios": {
+        "simulator": true
+      },
+      "android": {
+        "buildType": "apk",
+        "withoutCredentials": true
+      },
+      "channel": "base"
+    },
+    "androidapk": {
+      "android": {
+        "buildType": "apk",
+        "withoutCredentials": true
+      }
+    },
+    "development": {
+      "extends": "base",
+      "android": {
+        "gradleCommand": ":app:assembleDebug"
+      },
+      "ios": {
+        "buildConfiguration": "Debug"
+      },
+      "channel": "development"
+    },
+    "development_tv": {
+      "extends": "development",
+      "env": {
+        "EXPO_TV": "1"
+      },
+      "channel": "development"
+    },
+    "preview": {
+      "extends": "base",
+      "channel": "preview"
+    },
+    "preview_tv": {
+      "extends": "preview",
+      "env": {
+        "EXPO_TV": "1"
+      },
+      "channel": "preview"
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
